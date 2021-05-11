@@ -30,10 +30,12 @@ def _plot_bw_data(src_file: str, dst_file: str) -> None:
                                                   tooltip='Ride',
                                                   color='red', weight=1, radius=1).add_to(f)
                 folium.vector_layers.PolyLine([(row['lat'], row['lon']), (row['client_lat'], row['client_lon'])],
-                                              popup="&uarr; {up} MB/s</br>&darr; {down} MB/s".format(
+                                              popup="{date}</br>&uarr; {up} MB/s</br>&darr; {down} MB/s".format(
+                                                  date=currentday.strftime('%Y-%02m-%d'),
                                                   up=row['bw_up'] / (1024.0 * 1024),
                                                   down=row['bw_down'] / (1024.0 * 1024)),
-                                              tooltip="&uarr; {up} MB/s</br>&darr; {down} MB/s".format(
+                                              tooltip="{date}</br>&uarr; {up} MB/s</br>&darr; {down} MB/s".format(
+                                                  date=currentday.strftime('%Y-%02m-%d'),
                                                   up=row['bw_up'] / (1024.0 * 1024),
                                                   down=row['bw_down'] / (1024.0 * 1024)),
                                               color='blue', weight=1).add_to(f)
